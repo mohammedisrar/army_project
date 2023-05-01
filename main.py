@@ -3,87 +3,65 @@ import numpy as np
 import pickle
 import time
 
-
-available_new = {'Table': 50,
- 'Chair': 150,
- 'Bed': 25.0,
- 'Rack': 75.0,
- 'Almirah': 70.0,
- 'Fan': 70.0,
- 'Geyser': 70.0,
- 'AC': 70.0,
- 'Refrigerator': 65.0,
- 'Water cooler': 70.0}
-
-
-available_old = {'Table': 50,
- 'Chair': 150,
- 'Bed': 25.0,
- 'Rack': 75.0,
- 'Almirah': 70.0,
- 'Fan': 70.0,
- 'Geyser': 70.0,
- 'AC': 70.0,
- 'Refrigerator': 65.0,
- 'Water cooler': 70.0}
+df = pd.read_csv("https://raw.githubusercontent.com/mohammedisrar/army_project/main/DATA.csv")
 
 def function_execute():
-    a = input('Which product ?').title()
-    b = input('Which stock new or old? ')
-    d = input('Do you want to remove or add the ? ')
-    c = int(input('Enter how many are removed or added? '))
+    a = input('Which product ? : ').upper()
+    b = input('Which stock new or old? : ').lower()
+    d = input('Do you want to remove or add the ? : ').lower()
+    c = int(input('Enter how many are removed or added? : '))
     if d == 'remove':
         if b == 'new':
-            if a in available_new:
+            if a in df['available_items'].values:
                 try:
-                    exist = available_new[a]
+                    exist = df.loc[(df['available_items'] == a)]['available_amount_new'].values[0]
                 except:
                     print('First add the product in the list')
                     return None
                 exist -= c
-                available_new.update({a:exist})
+                df.at[df.loc[df['available_items'] == a].index[0] , 'available_amount_new']  = exist
             else:
                 print('The product not avaliable')
         elif b == 'old':
-            if a in available_old:
+            if a in df['available_items'].values:
                 try:
-                    exist = available_old[a]
+                    exist = df.loc[(df['available_items'] == a)]['available_amount_old'].values[0]
                 except:
                     print('First add the product in the list')
                     return None
                 exist -= c
-                available_old.update({a:exist})
+                df.at[df.loc[df['available_items'] == a].index[0] , 'available_amount_old']  = exist
             else:
                 print('The product not avaliable')
         else:
             print('enter valid stock')
     elif d == 'add':
         if b == 'new':
-            if a in available_new:
+            if a in df['available_items'].values:
                 try:
-                    exist = available_new[a]
+                    exist = df.loc[(df['available_items'] == a)]['available_amount_new'].values[0]
                 except:
                     print('First add the product in the list')
                     return None
                 exist += c
-                available_new.update({a:exist})
+                df.at[df.loc[df['available_items'] == a].index[0] , 'available_amount_new']  = exist
             else:
                 print('The product not avaliable')
         elif b == 'old':
-            if a in available_old:
+            if a in df['available_items'].values:
                 try:
-                    exist = available_old[a]
+                    exist = df.loc[(df['available_items'] == a)]['available_amount_old'].values[0]
                 except:
                     print('First add the product in the list')
                     return None
                 exist += c
-                available_old.update({a:exist})
+                df.at[df.loc[df['available_items'] == a].index[0] , 'available_amount_old']  = exist
             else:
                 print('The product not avaliable')
         else:
             print('enter valid stock')
 
-function_execute()
+print(function_execute())
 
-print(available_new)
-print(available_old)
+
+df.to_csv("DATA.csv")
