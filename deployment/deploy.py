@@ -12,7 +12,7 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route('/edit' , methods = ['post'])
+@app.route('/output' , methods = ['post'])
 def function_execute():
     a = request.form.get('product')
     b = request.form.get('stock')
