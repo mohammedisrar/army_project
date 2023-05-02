@@ -19,50 +19,48 @@ def function_execute():
                 try:
                     exist = df.loc[(df['available_items'] == a)]['available_amount_new'].values[0]
                 except:
-                    print('First add the product in the list')
-                    return None
+                    return 'First add the product in the list'
                 exist -= c
                 df.at[df.loc[df['available_items'] == a].index[0], 'available_amount_new'] = exist
             else:
-                print('The product not avaliable')
+                return 'The product not avaliable'
         elif b == 'old':
             if a in df['available_items'].values:
                 try:
                     exist = df.loc[(df['available_items'] == a)]['available_amount_old'].values[0]
                 except:
-                    print('First add the product in the list')
-                    return None
+                    return 'First add the product in the list'
                 exist -= c
                 df.at[df.loc[df['available_items'] == a].index[0] , 'available_amount_old']  = exist
             else:
-                print('The product not avaliable')
+                return 'The product not avaliable'
         else:
-            print('enter valid stock')
+            return 'enter valid stock'
     elif d == 'add':
         if b == 'new':
             if a in df['available_items'].values:
                 try:
                     exist = df.loc[(df['available_items'] == a)]['available_amount_new'].values[0]
                 except:
-                    print('First add the product in the list')
-                    return None
+                    return 'First add the product in the list'
                 exist += c
                 df.at[df.loc[df['available_items'] == a].index[0] , 'available_amount_new']  = exist
+                return "Task completed"
             else:
-                print('The product not avaliable')
+                return 'The product not avaliable'
         elif b == 'old':
             if a in df['available_items'].values:
                 try:
                     exist = df.loc[(df['available_items'] == a)]['available_amount_old'].values[0]
                 except:
-                    print('First add the product in the list')
-                    return None
+                    return 'First add the product in the list'
                 exist += c
                 df.at[df.loc[df['available_items'] == a].index[0] , 'available_amount_old']  = exist
+                return "Task completed"
             else:
-                print('The product not avaliable')
+                return 'The product not avaliable'
         else:
-            print('enter valid stock')
+            return 'enter valid stock'
 
 
 app.run(debug = True)
