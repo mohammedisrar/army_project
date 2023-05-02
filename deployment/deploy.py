@@ -1,5 +1,5 @@
 from flask import Flask, render_template , request
-import jobjib
+import joblib
 import pandas as pd
 import numpy as np
 import pickle
@@ -14,10 +14,10 @@ def home():
 
 @app.route('/edit' , methods = ['post'])
 def function_execute():
-    a = request.get('product')
-    b = request.get('stock')
-    d = request.get('add_remove')
-    c = request.get('items')
+    a = request.form.get('product')
+    b = request.form.get('stock')
+    d = request.form.get('add_remove')
+    c = request.form.get('items')
     df = pd.read_csv("https://raw.githubusercontent.com/mohammedisrar/army_project/main/DATA.csv")
     if d == 'remove':
         if b == 'new':
