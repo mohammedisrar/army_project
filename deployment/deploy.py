@@ -25,48 +25,64 @@ def function_execute():
                 try:
                     exist = df.loc[(df['available_items'] == a)]['available_amount_new'].values[0]
                 except:
-                    return 'First add the product in the list'
+                    data = 'First add the product in the list'
+                    return render_template('output.html',data = data)
                 exist -= c
                 df.at[df.loc[df['available_items'] == a].index[0], 'available_amount_new'] = exist
+                data = 'Task complete'
+                return render_template('output.html',data = data)
             else:
-                return 'The product not avaliable'
+                data = 'The product not avaliable'
+                return render_template('output.html',data = data)
         elif b == 'old':
             if a in df['available_items'].values:
                 try:
                     exist = df.loc[(df['available_items'] == a)]['available_amount_old'].values[0]
                 except:
-                    return 'First add the product in the list'
+                    data = 'First add the product in the list'
+                    return render_template('output.html',data = data)
                 exist -= c
                 df.at[df.loc[df['available_items'] == a].index[0] , 'available_amount_old']  = exist
+                data = 'Task complete'
+                return render_template('output.html',data = data)
             else:
-                return 'The product not avaliable'
+                data = 'The product not avaliable'
+                return render_template('output.html',data = data)
         else:
-            return 'enter valid stock'
+            data = 'enter valid stock'
+            return render_template('output.html',data = data)
     elif d == 'add':
         if b == 'new':
             if a in df['available_items'].values:
                 try:
                     exist = df.loc[(df['available_items'] == a)]['available_amount_new'].values[0]
                 except:
-                    return 'First add the product in the list'
+                    data = 'First add the product in the list'
+                    return render_template('output.html',data = data)
                 exist += c
                 df.at[df.loc[df['available_items'] == a].index[0] , 'available_amount_new']  = exist
-                return "Task completed"
+                data = 'Task complete'
+                return render_template('output.html',data = data)
             else:
-                return 'The product not avaliable'
+                data = 'The product not avaliable'
+                return render_template('output.html',data = data)
         elif b == 'old':
             if a in df['available_items'].values:
                 try:
                     exist = df.loc[(df['available_items'] == a)]['available_amount_old'].values[0]
                 except:
-                    return 'First add the product in the list'
+                    data = 'First add the product in the list'
+                    return render_template('output.html',data = data)
                 exist += c
                 df.at[df.loc[df['available_items'] == a].index[0] , 'available_amount_old']  = exist
-                return "Task completed"
+                data = 'Task complete'
+                return render_template('output.html',data = data)
             else:
-                return 'The product not avaliable'
+                data = 'The product not avaliable'
+                return render_template('output.html',data = data)
         else:
-            return 'enter valid stock'
+            data = 'enter valid stock'
+            return render_template('output.html',data = data)
 
 
 app.run(debug = True)
