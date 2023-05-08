@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset=utf-8">
+        <title>Project</title>
+            <style>
+                body{
+                    padding: 2% 5% 5% 30%;
+                    /* background-image: url("Wearhouse.jpg"); */
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    background-size: cover;
+                    background-image: linear-gradient(to bottom right, orange, white,green);
+                }
+
+                .container:hover {
+                      background-color: rgba(76, 175, 80, 0.3);
+                    }
+                 .container 
+                   {
+                    
+                        margin-top: 6px;                       
+                        border-radius: 12px;
+                        background:  rgba(106, 249, 111, 0.259);/* Green background with 30% opacity */
+                        padding: 2% 7% 9% 7%;
+                        width: 40%;
+                        height: 300px;
+                        
+                   }
+                   .col-75 
+                    {
+                        float: center;
+                        width: 92%;
+                        margin-top: 6px;
+                    }
+                  input {
+                          width: 90%;
+                        } 
+                  .sub {
+                            background-color: #04AA6D;
+                            color: white;
+                            padding: 12px 20px;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            float: center;
+                            width: 92%;
+                        }
+                        .sub:hover
+                        {
+                          background-color: orange;
+                        }
+                    
+
+            </style>
+    </head>
+    <body >
+        <h1 style="padding: 0% 0% 0% 12%;">Wearhouse Project</h1>
+        <div class="container" > 
+        <form action="{{ url_for("add_Remove")}}" method="post">
+
+            <b><label for="flname">SELECT TASK TO PERFORM</label></b><br><br>
+            <select class="col-75" id="operation" name="operation" required>
+                <option value=""></option>
+                <option value="add" name="op1">ADD ITEMS</option>
+                <option value="remove" >REMOVE ITEMS</option>
+              </select> <br><br>
+
+                <b><label for="flname">SELECT WEARHOUSE</label></b><br><br>
+                <select class="col-75" id="Wearhouse" name="Wearhouse" required>
+                  <option value=""></option>
+                  <option value="nw" name="op1">New Wearhouse</option>
+                  <option value="ow">Old Wearhouse</option>
+                </select> <br><br>
+             
+            <b><label for="flname">FURNITURE NAME</label></b><br><br>
+            <input type="text" id="fname" name="fname" placeholder="Furniture Name" required><br><br>
+            <b><label for="lastname">FURNITURE COUNT</label></b><br><br>
+            <input type="number" id="fcount" name="fcount" placeholder="Number Of Furniture To Add Or Remove" required><br><br>
+            <br><button class="sub"type="submit">Submit</button>
+        </form>
+         <!-- <div>{{data}} </div> -->
+       </div>
+     
+    </body>
+</html>
+
