@@ -3,7 +3,7 @@ import numpy as np
 import pickle
 import time
 
-df = pd.read_csv("https://raw.githubusercontent.com/mohammedisrar/army_project/main/DATA.csv")
+df = pd.read_csv("C://Users//MIT//IdeaProjects//army_project//deployment//DATA.csv")
 
 def function_execute():
     a = input('Which product ? : ').upper()
