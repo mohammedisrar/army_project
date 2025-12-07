@@ -3,7 +3,6 @@ from flask import Flask, request, render_template
 import pandas as pd
 # Flask constructor
 app = Flask(__name__)  
-print("Hello world")
  
 # A decorator used to tell the application
 # which URL is associated function
